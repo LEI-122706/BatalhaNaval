@@ -7,3 +7,7 @@ Basic academic version of Battleship game to build upon.
 - Patricia Martins, nº105328
 - Tiago Candeias, nº122676
 - Eduardo Correia, nº122703
+
+#**Github Actions**
+
+Recorremos ao Github Actions - Jave with Maven para garantir que executamos os testes automaticamente
