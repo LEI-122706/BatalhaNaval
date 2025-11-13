@@ -39,9 +39,17 @@ class CarrackTest {
     // constructor2() - CC path 2: null bearing should throw NullPointerException
     @Test
     void constructor2() {
-        assertThrows(NullPointerException.class, () -> {
-            new Carrack(null, new Position(0, 0));
-        }, "Error: expected NullPointerException when constructing Carrack with null bearing");
+        AssertionError ex = assertThrows(AssertionError.class, () -> {
+            new Carrack(null, new Position(1, 1));
+        }, "Error: expected NullPointerException when constructing Caravel with null bearing");
+        assertEquals(ex.getClass(), AssertionError.class);
+    }
+
+    @Test
+    void constructorThrowsForInvalidBearing() {
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () ->
+                new Carrack(Compass.UNKNOWN, new Position(5, 5)));
+        assertEquals("ERROR! invalid bearing for the carrack", exception.getMessage());
     }
 
     // getSize() - CC = 1

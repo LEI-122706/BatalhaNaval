@@ -46,6 +46,13 @@ class CaravelTest {
         assertEquals(ex.getClass(), AssertionError.class);
     }
 
+    @Test
+    void constructorThrowsForInvalidBearing() {
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () ->
+                new Caravel(Compass.UNKNOWN, new Position(5, 5)));
+        assertEquals("ERROR! invalid bearing for the caravel", exception.getMessage());
+    }
+
     // getSize() - CC = 1
     @Test
     void getSize() {
