@@ -18,22 +18,34 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @DisplayName("Carrack's test class (LEI-122676)")
 class CarrackTest {
-    private Carrack carrack;
+    private Carrack carrackN;
+    private Carrack carrackS;
+    private Carrack carrackE;
+    private Carrack carrackW;
 
     @BeforeEach
     void setUp() {
-        carrack = new Carrack(Compass.EAST, new Position(2, 2));
+        carrackN = new Carrack(Compass.NORTH, new Position(5, 5));
+        carrackS = new Carrack(Compass.SOUTH, new Position(5, 5));
+        carrackE = new Carrack(Compass.EAST, new Position(5, 5));
+        carrackW = new Carrack(Compass.WEST, new Position(5, 5));
     }
 
     @AfterEach
     void tearDown() {
-        carrack = null;
+        carrackN = null;
+        carrackS = null;
+        carrackE = null;
+        carrackW = null;
     }
 
     // constructor1() - CC path 1: normal construction
     @Test
     void constructor1() {
-        assertNotNull(carrack, "Error: expected non-null Carrack instance but got null");
+        assertNotNull(carrackN, "Error: expected non-null Carrack instance but got null");
+        assertNotNull(carrackS, "Error: expected non-null Carrack instance but got null");
+        assertNotNull(carrackE, "Error: expected non-null Carrack instance but got null");
+        assertNotNull(carrackW, "Error: expected non-null Carrack instance but got null");
     }
 
     // constructor2() - CC path 2: null bearing should throw NullPointerException
@@ -55,7 +67,9 @@ class CarrackTest {
     // getSize() - CC = 1
     @Test
     void getSize() {
-        int size = carrack.getSize();
-        assertTrue(size > 0, "Error: expected positive size but got " + size);
+        assertEquals(3, carrackN.getSize());
+        assertEquals(3, carrackS.getSize());
+        assertEquals(3, carrackW.getSize());
+        assertEquals(3, carrackE.getSize());
     }
 }
