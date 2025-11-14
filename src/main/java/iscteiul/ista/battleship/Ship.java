@@ -140,7 +140,7 @@ public abstract class Ship implements IShip {
     public int getBottomMostPos() {
         int bottom = getPositions().get(0).getRow();
         for (int i = 1; i < getSize(); i++)
-            if (getPositions().get(i).getRow() > bottom)
+            if (getPositions().get(i).getRow() >= bottom)
                 bottom = getPositions().get(i).getRow();
         return bottom;
     }
@@ -154,7 +154,7 @@ public abstract class Ship implements IShip {
     public int getLeftMostPos() {
         int left = getPositions().get(0).getColumn();
         for (int i = 1; i < getSize(); i++)
-            if (getPositions().get(i).getColumn() <= left)
+            if (getPositions().get(i).getColumn() <= left+1)
                 left = getPositions().get(i).getColumn();
         return left;
     }

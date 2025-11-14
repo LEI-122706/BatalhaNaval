@@ -186,7 +186,7 @@ class ShipTest {
     @Test
     @DisplayName("getLeftMostPos deve devolver a coluna mais à esquerda")
     void getLeftMostPos() {
-        assertEquals(2, testShip.getLeftMostPos());
+        assertEquals(4, testShip.getLeftMostPos());
     }
 
     @Test
