@@ -1,6 +1,7 @@
 /**
  *
  */
+
 package iscteiul.ista.battleship;
 
 import java.util.Scanner;
