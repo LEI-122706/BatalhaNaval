@@ -27,6 +27,7 @@ class GalleonTest {
     @Test
     @DisplayName("fillNorth creates T shaped position for NORTH bearing")
     void fillNorth(){
+        assertEquals(EXPECTED_SIZE, g1.getPositions().size());
         assertTrue(g1.getPositions().contains(new Position(5,5)));
         assertTrue(g1.getPositions().contains(new Position(5,6)));
         assertTrue(g1.getPositions().contains(new Position(5,7)));
@@ -37,6 +38,7 @@ class GalleonTest {
     @Test
     @DisplayName("fillSouth creates T shaped position for SOUTH bearing")
     void fillSouth(){
+        assertEquals(EXPECTED_SIZE, g2.getPositions().size());
         assertTrue(g2.getPositions().contains(new Position(5,5)));
         assertTrue(g2.getPositions().contains(new Position(6,5)));
         assertTrue(g2.getPositions().contains(new Position(7,4)));
@@ -47,6 +49,7 @@ class GalleonTest {
     @Test
     @DisplayName("fillWest creates T shaped position for WEST bearing")
     void fillWest(){
+        assertEquals(EXPECTED_SIZE, g4.getPositions().size());
         assertTrue(g4.getPositions().contains(new Position(5,5)));
         assertTrue(g4.getPositions().contains(new Position(6,5)));
         assertTrue(g4.getPositions().contains(new Position(6,6)));
@@ -57,6 +60,7 @@ class GalleonTest {
     @Test
     @DisplayName("fillEast creates T shaped position for EAST bearing")
     void fillEast(){
+        assertEquals(EXPECTED_SIZE, g3.getPositions().size());
         assertTrue(g3.getPositions().contains(new Position(5,5)));
         assertTrue(g3.getPositions().contains(new Position(6,3)));
         assertTrue(g3.getPositions().contains(new Position(6,4)));
@@ -66,12 +70,11 @@ class GalleonTest {
 
     @Test
     @DisplayName("Constructor throws exception for null bearing")
-    void constructorThrowsForNullBearing() {
-        Throwable exception = assertThrows(Throwable.class, () ->
-                new Galleon(null, new Position(5, 5))
-        );
+    void constructorThrowsNullPointerForNullBearing() {
+        Throwable exception = assertThrows(Throwable.class, () -> new Galleon(null, new Position(5, 5)));
         assertTrue(exception instanceof NullPointerException || exception instanceof AssertionError);
-        if (exception.getMessage() != null) {
+
+        if (exception instanceof NullPointerException) {
             assertEquals("ERROR! invalid bearing for the galleon", exception.getMessage());
         }
     }
@@ -85,12 +88,12 @@ class GalleonTest {
     }
 
     @Test
-    @DisplayName("All fill methods result in exactly SIZE positions")
-    void allFillMethodsSizeCheck() {
-        assertEquals(EXPECTED_SIZE, g1.getPositions().size());
-        assertEquals(EXPECTED_SIZE, g2.getPositions().size());
-        assertEquals(EXPECTED_SIZE, g3.getPositions().size());
-        assertEquals(EXPECTED_SIZE, g4.getPositions().size());
+    @DisplayName("Constructor handles valid bearings correctly")
+    void constructorCoversAllBearings() {
+        assertDoesNotThrow(() -> new Galleon(Compass.NORTH, new Position(0,0)));
+        assertDoesNotThrow(() -> new Galleon(Compass.SOUTH, new Position(0,0)));
+        assertDoesNotThrow(() -> new Galleon(Compass.EAST, new Position(0,0)));
+        assertDoesNotThrow(() -> new Galleon(Compass.WEST, new Position(0,0)));
     }
 
 }
