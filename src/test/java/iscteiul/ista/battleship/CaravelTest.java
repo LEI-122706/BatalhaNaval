@@ -18,23 +18,35 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @DisplayName("Caravel's test class (LEI-122676)")
 class CaravelTest {
-    private Caravel caravel;
+    private Caravel caravelN;
+    private Caravel caravelE;
+    private Caravel caravelS;
+    private Caravel caravelW;
 
     @BeforeEach
     void setUp() {
         // happy-path instance used by most tests
-        caravel = new Caravel(Compass.NORTH, new Position(4, 4));
+        caravelN = new Caravel(Compass.NORTH, new Position(4, 4));
+        caravelE = new Caravel(Compass.EAST, new Position(4, 4));
+        caravelS = new Caravel(Compass.SOUTH, new Position(4, 4));
+        caravelW = new Caravel(Compass.WEST, new Position(4, 4));
     }
 
     @AfterEach
     void tearDown() {
-        caravel = null;
+        caravelN = null;
+        caravelE = null;
+        caravelS = null;
+        caravelW = null;
     }
 
     // constructor1() - CC path 1: normal construction
     @Test
     void constructor1() {
-        assertNotNull(caravel, "Error: expected non-null Caravel instance but got null");
+        assertNotNull(caravelN, "Error: expected non-null Caravel instance but got null");
+        assertNotNull(caravelE, "Error: expected non-null Caravel instance but got null");
+        assertNotNull(caravelW, "Error: expected non-null Caravel instance but got null");
+        assertNotNull(caravelS, "Error: expected non-null Caravel instance but got null");
     }
 
     // constructor2() - CC path 2: null bearing should throw NullPointerException
@@ -43,7 +55,7 @@ class CaravelTest {
         AssertionError ex = assertThrows(AssertionError.class, () -> {
             new Caravel(null, new Position(1, 1));
         }, "Error: expected NullPointerException when constructing Caravel with null bearing");
-        assertEquals(ex.getClass(), AssertionError.class);
+        assertEquals(AssertionError.class, ex.getClass());
     }
 
     @Test
@@ -56,7 +68,9 @@ class CaravelTest {
     // getSize() - CC = 1
     @Test
     void getSize() {
-        int size = caravel.getSize();
-        assertEquals(size, 2);
+        assertEquals(2, caravelN.getSize());
+        assertEquals(2, caravelE.getSize());
+        assertEquals(2, caravelS.getSize());
+        assertEquals(2, caravelW.getSize());
     }
 }
