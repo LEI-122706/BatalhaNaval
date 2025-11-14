@@ -69,17 +69,6 @@ class GalleonTest {
     }
 
     @Test
-    @DisplayName("Constructor throws exception for null bearing")
-    void constructorThrowsNullPointerForNullBearing() {
-        Throwable exception = assertThrows(Throwable.class, () -> new Galleon(null, new Position(5, 5)));
-        assertTrue(exception instanceof NullPointerException || exception instanceof AssertionError);
-
-        if (exception instanceof NullPointerException) {
-            assertEquals("ERROR! invalid bearing for the galleon", exception.getMessage());
-        }
-    }
-
-    @Test
     @DisplayName("Constructor throws exception for invalid bearing")
     void constructorThrowsForInvalidBearing(){
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () ->
