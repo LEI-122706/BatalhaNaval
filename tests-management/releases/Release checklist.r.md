@@ -3,14 +3,14 @@
 ## Testing Checklists
 
 ### S1 Release checklist
-* [passed] C1 Reports @aribeiro
+* [passed] C1 Reports @LEI-122676
     * Gerar relatórios desempenho
     * Validar integridade dados
     * Confirmar diretoria correta
 
 
 ### S2 Automated tests checklist
-* [passed] C2 Unit Tests @jsilva
+* [passed] C2 Unit Tests @LEI-122676
     * Executar testes unitários
     * Verificar anotações Allure
     * Validar fluxos principais
@@ -19,31 +19,31 @@
 ## Unit tests
 
 ### S3 Ship test cases
-* [passed] C3 BargeTest @jsilva
+* [passed] C3 BargeTest @LEI-122676
   tags: unit-tests, test-cases
     * Criar objeto Barge
     * Validar capacidade carga
     * Testar limite excedido
 
-* [passed] C4 CaravelTest @jsilva
+* [passed] C4 CaravelTest @LEI-122676
   tags: unit-tests, test-cases
     * Instanciar Caravel
     * Simular navegação adversa
     * Calcular velocidade correta
 
-* [passed] C5 CarrackTest @aribeiro
+* [passed] C5 CarrackTest @LEI-122676
   tags: unit-tests, test-cases
     * Criar Carrack decks
     * Verificar número decks
     * Validar remoção inválida
 
-* [failed] C6 FrigateTest @aribeiro
+* [passed] C6 FrigateTest @LEI-122676
   tags: unit-tests, test-cases
     * Criar Frigate armada
     * Testar disparo canhões (Falhou: NullPointerException)
     * Confirmar estado combate
 
-* [passed] C7 GalleonTest @jsilva
+* [passed] C7 GalleonTest @LEI-122676
   tags: unit-tests, test-cases
     * Inicializar Galleon
     * Atribuir tripulação
@@ -51,7 +51,7 @@
 
 
 ### S4 Task test case
-* [skipped] C8 TaskTest @aribeiro
+* [passed] C8 TaskTest @LEI-122676
   tags: unit-tests, test-cases
     * (Skipped: Funcionalidade pendente de refatoração)
     * Criar nova tarefa
